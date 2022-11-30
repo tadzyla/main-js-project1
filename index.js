@@ -54,12 +54,16 @@ function game() {
             let computerSelection = computerPlay();
             console.log(`Computer picked: ${computerSelection}`);
             console.log(playRound(playerSelection, computerSelection));
-        } else {
+        }  else {
             alert("Choose the right hand");
             location.reload();
             break;
         }
     }
+
+    setTimeout(() => {
+        location.reload()
+    }, 8000, );
 }
 
 game();
