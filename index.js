@@ -13,7 +13,6 @@ function computerPlay() {
         computerHandPick = "scissors";
     }
 
-    console.log(`Computer picked: ${computerHandPick}`);
     return computerHandPick;
 }
 
@@ -41,17 +40,20 @@ function playRound(playerSelection, computerSelection) {
         result = "You win! Rock beats Scissors";
     }
 
-    console.log(result);
     return result;
 }
 
-// const playerSelection = window.prompt("Type your hand").toLowerCase();
 
-function game(playerSelection) {
+function game() {
+    
+    const playerSelection = window.prompt("Type your hand").toLowerCase();
+
     for( let i = 0; i < 5; i++ ) {
         console.log(`Player picked: ${playerSelection}`);
-        playRound(playerSelection, computerPlay());
+        let computerSelection = computerPlay();
+        console.log(`Computer picked: ${computerSelection}`);
+        console.log(playRound(playerSelection, computerSelection));
     }
 }
 
-game(window.prompt("Type your hand").toLowerCase());
+game();
