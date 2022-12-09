@@ -1,69 +1,64 @@
 
-function computerPlay() {
+const userHand = document.getElementById("user_hand")
+const elfHand = document.getElementById("elf_hand")
+const handButtons = document.querySelectorAll(".hand_buttons")
+const playerMessage = document.getElementById("user_message")
+
+handButtons.forEach(button => {
+    button.addEventListener("click", game)
+})
+
+function game(playerHand) {
+    const computerHand = computerPlay()
+
+    if (playerHand.target.value === "Rock" && computerHand === "Rock"){
+        elfHand.src = "/photos/rock.png"
+        userHand.src = "/photos/rock.png"
+        playerMessage.textContent = "It's draw!"
+
+    } else if (playerHand.target.value === "Paper" && computerHand === "Paper") {
+        elfHand.src = "/photos/paper.png"
+        userHand.src = "/photos/paper.png"
+        playerMessage.textContent = "It's draw!"
     
-    let computerHandPick = Math.floor(Math.random() * 3);
+    } else if (playerHand.target.value === "Scissors" && computerHand === "Scissors") {
+        elfHand.src = "/photos/scissors.png"
+        userHand.src = "/photos/scissors.png"
+        playerMessage.textContent = "It's draw!"
+    
+    } else if (playerHand.target.value === "Rock" && computerHand === "Paper") {
+        elfHand.src = "/photos/paper.png"
+        userHand.src = "/photos/rock.png"
+        playerMessage.textContent = "You loose against Elf"
+
+    } else if (playerHand.target.value === "Paper" && computerHand === "Scissors") {
+        elfHand.src = "/photos/scissors.png"
+        userHand.src = "/photos/paper.png"
+        playerMessage.textContent = "You loose against Elf"
+
+    } else if (playerHand.target.value === "Scissors" && computerHand === "Paper") {
+        elfHand.src = "/photos/paper.png"
+        userHand.src = "/photos/scissors.png"
+        playerMessage.textContent = "You win against Elf"
+
+    } else {
+        elfHand.src = "/photos/scissors.png"
+        userHand.src = "/photos/rock.png"
+        playerMessage.textContent = "You win against Elf"
+    }
+}
+
+function computerPlay() {
+    let computerHandPick = Math.floor(Math.random() * 3)
 
     if (computerHandPick === 0) {
-        computerHandPick = "rock";
+        computerHandPick = "Rock"
     } 
     else if (computerHandPick === 1) {
-        computerHandPick = "paper";
+        computerHandPick = "Paper"
     } 
     else {
-        computerHandPick = "scissors";
+        computerHandPick = "Scissors"
     }
-
-    return computerHandPick;
+    return computerHandPick
 }
-
-
-function playRound(playerSelection, computerSelection) {
-
-    let result = "You lose! Scissors beats Paper";
-
-    if (computerSelection === playerSelection) {
-        result = "Try again";
-    }
-    else if (computerSelection === "rock" && playerSelection === "paper") {
-        result = "You win! Paper beats Rock";
-    }
-    else if (computerSelection === "rock" && playerSelection === "scissors") {
-        result = "You lose! Rock beats Scissors";
-    }
-    else if (computerSelection === "paper" && playerSelection === "rock") {
-        result = "You lose! Paper beats Rock";
-    }
-    else if (computerSelection === "paper" && playerSelection === "scissors") {
-        result = "You win! Scissors beats Paper";
-    }
-    else {
-        result = "You win! Rock beats Scissors";
-    }
-
-    return result;
-}
-
-
-function game() {
-
-    const playerSelection = window.prompt("Type your hand here ('paper', 'scissors' or 'rock')", "paper").toLowerCase();
-
-    for (let i = 0; i < 5; i++) {
-        if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
-            console.log(`Player picked: ${playerSelection}`);
-            let computerSelection = computerPlay();
-            console.log(`Computer picked: ${computerSelection}`);
-            console.log(playRound(playerSelection, computerSelection));
-        }  else {
-            alert("Choose the right hand");
-            location.reload();
-            break;
-        }
-    }
-
-    setTimeout(() => {
-        location.reload()
-    }, 8000, );
-}
-
-game();

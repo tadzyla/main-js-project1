@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:ital,wght@0,500;0,700;0,900;1,300&display=swap');
+ 
+ * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+ }
+
+ body {
+    font-family: 'Paytone One', sans-serif;
+    background: rgb(64,60,138);
+    background: linear-gradient(333deg, rgba(64,60,138,1) 0%, rgba(148,111,104,1) 53%, rgba(0,212,255,1) 100%);
+ }
+
+ h1 {
+    font-size: 50px;
+    font-weight: 600;
+    color: aliceblue;
+}
+
+ .container {
+    position: relative;
+    min-height: 100vh;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+ }
+
+ p {
+    font-size: 36px;
+    color: aliceblue;
+ }
+
+.hands {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hands img {
+    width: 200px;
+    height: auto;
+}
+
+.elves {
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+}
+
+.elf {
+    box-shadow: 8px 9px 19px 1px rgba(0,0,0,0.57);
+    border-radius: 50%;
+    position: relative;
+}
+
+.buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.buttons button {
+    width: 7rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: aliceblue;
+    border: 3px solid #9abec3;
+    font-size: 18px;
+    font-family: "Paytone One";
+}
+
+.buttons button:hover {
+    scale: 1.1
+}
