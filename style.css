@@ -57,6 +57,10 @@
     position: relative;
 }
 
+.elf img {
+    height: 150px;
+}
+
 .buttons {
     display: flex;
     gap: 2rem;
