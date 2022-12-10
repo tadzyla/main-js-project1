@@ -16,10 +16,12 @@ function game(playerHand) {
     userHand.src = `photos/${playerHand.target.value}.png`
     playerMessage.textContent = getMessageAndUpdateScores(computerHand, playerHand.target.value)
     if (playerMessage.textContent === "Elf scored 5 points, you lost!" || playerMessage.textContent === "You scored 5 points, you are winner!") {
-        setTimeout(() => {
-            location.reload()
-        }, 1000, );
+        sleep(4000).then(() =>  location.reload())
     }
+}
+
+function sleep(ms) {
+    return new Promise (resolve => setTimeout(resolve, ms))
 }
 
 function getMessageAndUpdateScores(computerHand, playerHand) {
