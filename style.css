@@ -78,3 +78,11 @@
 .buttons button:hover {
     scale: 1.1
 }
+
+#my_score::before {
+    content: "My score: ";
+}
+
+#elf_score::before {
+    content: "Elf score: ";
+}
