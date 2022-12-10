@@ -10,8 +10,8 @@ handButtons.forEach(button => {
 
 function game(playerHand) {
     const computerHand = computerPlay()
-    elfHand.src = `/photos/${computerHand}.png`
-    userHand.src = `/photos/${playerHand.target.value}.png`
+    elfHand.src = `photos/${computerHand}.png`
+    userHand.src = `photos/${playerHand.target.value}.png`
     playerMessage.textContent = getMessage(computerHand, playerHand.target.value)
 }
 
