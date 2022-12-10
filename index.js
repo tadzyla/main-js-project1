@@ -10,55 +10,32 @@ handButtons.forEach(button => {
 
 function game(playerHand) {
     const computerHand = computerPlay()
+    elfHand.src = `/photos/${computerHand}.png`
+    userHand.src = `/photos/${playerHand.target.value}.png`
+    playerMessage.textContent = getMessage(computerHand, playerHand.target.value)
+}
 
-    if (playerHand.target.value === "Rock" && computerHand === "Rock"){
-        elfHand.src = "/photos/rock.png"
-        userHand.src = "/photos/rock.png"
-        playerMessage.textContent = "It's draw!"
+function getMessage(computerHand, playerHand) {
 
-    } else if (playerHand.target.value === "Paper" && computerHand === "Paper") {
-        elfHand.src = "/photos/paper.png"
-        userHand.src = "/photos/paper.png"
-        playerMessage.textContent = "It's draw!"
-    
-    } else if (playerHand.target.value === "Scissors" && computerHand === "Scissors") {
-        elfHand.src = "/photos/scissors.png"
-        userHand.src = "/photos/scissors.png"
-        playerMessage.textContent = "It's draw!"
-    
-    } else if (playerHand.target.value === "Rock" && computerHand === "Paper") {
-        elfHand.src = "/photos/paper.png"
-        userHand.src = "/photos/rock.png"
-        playerMessage.textContent = "You loose against Elf"
-
-    } else if (playerHand.target.value === "Paper" && computerHand === "Scissors") {
-        elfHand.src = "/photos/scissors.png"
-        userHand.src = "/photos/paper.png"
-        playerMessage.textContent = "You loose against Elf"
-
-    } else if (playerHand.target.value === "Scissors" && computerHand === "Paper") {
-        elfHand.src = "/photos/paper.png"
-        userHand.src = "/photos/scissors.png"
-        playerMessage.textContent = "You win against Elf"
-
-    } else {
-        elfHand.src = "/photos/scissors.png"
-        userHand.src = "/photos/rock.png"
-        playerMessage.textContent = "You win against Elf"
+    if (playerHand === computerHand){ 
+        return "It's a draw!" 
     }
+    if ((playerHand === "Rock" && computerHand === "Paper") || 
+        (playerHand === "Paper" && computerHand === "Scissors") || 
+        (playerHand === "Scissors" && computerHand === "Rock")){
+        return "Elf won!"
+    }
+        return "You won!"
 }
 
 function computerPlay() {
     let computerHandPick = Math.floor(Math.random() * 3)
 
     if (computerHandPick === 0) {
-        computerHandPick = "Rock"
+        return "Rock"
     } 
-    else if (computerHandPick === 1) {
-        computerHandPick = "Paper"
+    if (computerHandPick === 1) {
+        return"Paper"
     } 
-    else {
-        computerHandPick = "Scissors"
-    }
-    return computerHandPick
+    return "Scissors"
 }
